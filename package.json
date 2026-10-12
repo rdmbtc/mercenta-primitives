@@ -3,8 +3,47 @@
   "version": "1.0.0",
   "description": "A reusable agent-economy toolkit built for the Arc blockchain.",
   "type": "module",
-  "main": "sdk/PolicyGate.ts",
+  "main": "dist/sdk/index.js",
+  "module": "dist/sdk/index.js",
+  "types": "dist/sdk/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/sdk/index.d.ts",
+      "import": "./dist/sdk/index.js",
+      "default": "./dist/sdk/index.js"
+    },
+    "./policy": {
+      "types": "./dist/sdk/PolicyGate.d.ts",
+      "import": "./dist/sdk/PolicyGate.js"
+    },
+    "./x402": {
+      "types": "./dist/sdk/x402.d.ts",
+      "import": "./dist/sdk/x402.js"
+    },
+    "./onramp": {
+      "types": "./dist/sdk/onramp.d.ts",
+      "import": "./dist/sdk/onramp.js"
+    },
+    "./abis": {
+      "types": "./dist/sdk/abis.d.ts",
+      "import": "./dist/sdk/abis.js"
+    },
+    "./constants": {
+      "types": "./dist/sdk/constants.d.ts",
+      "import": "./dist/sdk/constants.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "sdk",
+    "deployments",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
     "test": "node --loader ts-node/esm examples/autonomous-procurement-agent.ts",
     "agent:procure": "node --loader ts-node/esm examples/autonomous-procurement-agent.ts"
   },
@@ -15,7 +54,10 @@
     "solidity",
     "foundry",
     "viem",
-    "mercenta"
+    "mercenta",
+    "policy-engine",
+    "x402",
+    "onramp"
   ],
   "author": "Nursultan Nurdaulet (@rdmnad)",
   "license": "MIT",
