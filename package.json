@@ -45,7 +45,8 @@
     "build": "tsc",
     "prepack": "npm run build",
     "test": "node --loader ts-node/esm examples/autonomous-procurement-agent.ts",
-    "agent:procure": "node --loader ts-node/esm examples/autonomous-procurement-agent.ts"
+    "agent:procure": "node --loader ts-node/esm examples/autonomous-procurement-agent.ts",
+    "agent:x402": "node --loader ts-node/esm examples/agent-x402-buyer.ts"
   },
   "keywords": [
     "arc",
