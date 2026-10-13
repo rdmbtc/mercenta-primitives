@@ -156,3 +156,63 @@ For onboarding customers without native Arc USDC:
 - Use `buildArcOnrampUrl({ walletAddress, amountUsdc, fiatCurrency: 'USD' })`
 - Directs users to the hosted onramp interface at `https://mainnet.mercenta.xyz/onramp`
 - Supports Circle Cross-Chain Transfer Protocol (CCTP) to bridge USDC seamlessly from Base, Arbitrum, Ethereum, or Solana into Arc.
+
+---
+
+## 🛠️ 6. Agent Tool-Calling Specifications (MCP & Function Calling)
+
+To equip autonomous agents (Claude, GPT, LangChain, ElizaOS, Antigravity) with native Mercenta capabilities, register these typed tool definitions:
+
+### `mercenta_catalog_search`
+```json
+{
+  "name": "mercenta_catalog_search",
+  "description": "Searches available digital goods across verified institutional categories on Arc (gaming, subscriptions, creator top-ups, api tokens, compute).",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "category": { "type": "string", "enum": ["gaming", "subscriptions", "creator", "api", "compute"] },
+      "query": { "type": "string", "description": "Search term, e.g. 'Telegram Stars' or 'Steam 50'" },
+      "maxPriceUsdc": { "type": "number", "description": "Maximum budget in USDC" }
+    },
+    "required": ["query"]
+  }
+}
+```
+
+### `mercenta_evaluate_policy`
+```json
+{
+  "name": "mercenta_evaluate_policy",
+  "description": "Evaluates an order intent through Mercenta's deterministic 5-Step Policy Engine before authorizing payment.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "orderId": { "type": "string" },
+      "listingId": { "type": "string" },
+      "orderValueUsdc": { "type": "number" },
+      "supplierCostUsdc": { "type": "number" },
+      "category": { "type": "string" }
+    },
+    "required": ["orderId", "listingId", "orderValueUsdc", "supplierCostUsdc", "category"]
+  }
+}
+```
+
+### `mercenta_buy_x402`
+```json
+{
+  "name": "mercenta_buy_x402",
+  "description": "Executes a purchase via Circle Agent Stack x402 on Arc Mainnet. Automatically requests challenge, checks policy, and settles in native Arc USDC.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "productId": { "type": "string", "description": "Product ID, e.g. 'telegram-stars-100'" },
+      "recipient": { "type": "string", "description": "Destination handle or account" },
+      "quantity": { "type": "integer", "default": 1 }
+    },
+    "required": ["productId", "recipient"]
+  }
+}
+```
+
