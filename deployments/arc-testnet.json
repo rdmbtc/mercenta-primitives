@@ -3,7 +3,7 @@
   "chainId": 5042002,
   "rpc": "https://rpc.testnet.arc.network",
   "explorer": "https://testnet.arcscan.app",
-  "profitVault": "0x535aef2f534a748c03798aa12da0545fcf3e68ea",
+  "x402GatewayAcceptanceTx": "0xef8037362a4b0e7f07b3c6d81b3327389b9271ab57fd7c5e537e4c7a578835b6",
   "usdc": "0x3600000000000000000000000000000000000000",
   "decimals": 6
 }

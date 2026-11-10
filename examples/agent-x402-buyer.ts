@@ -71,9 +71,9 @@ async function runAutonomousBuyer() {
     console.log(`   - Chain: Arc Mainnet (${challenge.challenge.chainId})`);
     console.log(`   - Payee: ${challenge.challenge.recipient}`);
 
-    // 5. Payment settlement simulation (in live production: signed via agent MPC / private key)
+    // 5. Payment settlement example (in live production: signed via agent MPC / private key)
     console.log('💸 Step 4: Signing Arc Mainnet settlement payment...');
-    const simulatedTxHash = '0xcf322d7d8049bbf7f11d6cde15d8c56bde4a81dade45a1201b41e4751662253e'; // Verified Arc Mainnet pilot hash
+    const simulatedTxHash = '0xaefe4925160179f02222d4ccb23be28c93bc7c4c8c3a51cc101f474f157d99d3'; // Example verified Arc Mainnet tx hash
 
     // 6. Fulfill order with payment proof
     console.log('📦 Step 5: Submitting payment proof (X-Payment-Tx) to release voucher...');
